@@ -38,7 +38,7 @@ and open the template in the editor.
                 $.ajax({
                     url: url,
                     data: data,
-                    method: "GET",
+                    method: "POST",
 
                     beforeSend: function () {
                         alert("preparo algo");
@@ -46,7 +46,9 @@ and open the template in the editor.
 
                     success: function (result) {
                         alert("qué hago con los datos");
-			alert(result);
+			resArray = JSON.parse(result);
+			alert ('la operación ha salido '+ resArray['status']+' con resultado '+ resArray.result);
+			console.log(resArray);
                     },
 
                     error: function (jqXHR, textStatus, errorThrown) {

@@ -1,5 +1,7 @@
 <?php
 
+$array['status'] = 'OK';
+$array['result'] = 250;
 
-var_dump($_GET);
-echo "hola Mundo";
+
+echo json_encode($array);
