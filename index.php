@@ -8,15 +8,22 @@ if(!empty($_POST)){
     
     $action = $_POST['action'];
     
+    $loginController = new LoginController();
+    $result = $loginController->$action();
+    echo json_encode($result); 
+    /*
     if(strcmp($action, "login") === 0){
         //aqui hago login
-        
+        $name = "checkLogin";
         $loginController = new LoginController();
-        $result = $loginController->checkLogin();
-    } else if(strcmp($action, "register") === 0){
+        $result = $loginController->$name();
+        echo json_encode($result);
         
-    }
-    echo json_encode($result);
+    } else if(strcmp($action, "register") === 0){
+        $loginController = new LoginController();
+        $result = $loginController->register();
+        echo json_encode($result);
+    }*/
     return;
 }
 

@@ -21,7 +21,14 @@ class LoginController {
         return $status;
     }
     
-    public function addLogin(){
+    public function register(){
+        $user = $_POST['user'];
+        $pass = $_POST['pass'];
+        $email = $_POST['email'];
+        $rol = $_POST['rol'];
+        
+        $model = new LoginModel();
+        return $model->addUser($user, $pass, $email, $rol);
         
     }
 }
