@@ -20,4 +20,8 @@ class LoginController {
         $status = $model->checkLogin($user, $pass);
         return $status;
     }
+    
+    public function addLogin(){
+        
+    }
 }
