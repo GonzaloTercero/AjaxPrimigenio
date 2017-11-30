@@ -13,27 +13,14 @@ and open the template in the editor.
 	<script>
             var httpRequest;
 
-            function alertContents() {
-                if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                    if (httpRequest.status === 200) {
-                        alert(httpRequest.responseText);
-                    } else {
-                       alert('There was a problem with the request.');
-                        alert(httpRequest.statusText);
-                    }
-                }
-		window.location.href = "http://localhost:8888/index.php";
-            }
-
             var alertcontentsGet2 = function () {
-                var url = "http://localhost:8888/index.php";
+                var url = "http://localhost:8888/AjaxPrimigenio/index.php";
                 var data = {
+                    action : "login",
                     user: "Gonzalo",
                     pass: "MolaMazo"
                 };
-                //$.get(url, data, function(result){alert ("Ha ido Bien la cosa");});
 
-                //$.post(url, data, function(result){alert ("Ha ido Bien la cosa");});
 
                 $.ajax({
                     url: url,
@@ -41,11 +28,9 @@ and open the template in the editor.
                     method: "POST",
 
                     beforeSend: function () {
-                        alert("preparo algo");
                     },
 
                     success: function (result) {
-                        alert("qué hago con los datos");
 			resArray = JSON.parse(result);
 			alert ('la operación ha salido '+ resArray['status']+' con resultado '+ resArray.result);
 			console.log(resArray);
@@ -60,22 +45,45 @@ and open the template in the editor.
                 });
             }
 
-            function makeRequest() {
-                httpRequest = new XMLHttpRequest();
 
-                if (!httpRequest) {
-                    alert('Giving up :( Cannot create an XMLHTTP instance');
-                    return false;
-                }
-                httpRequest.onreadystatechange = alertContents;
-                httpRequest.open('GET', 'http://localhost:8888/index.php?user=Gonzalo');
-                httpRequest.send();
+
+            var altaUsuario = function () {
+                var url = "http://localhost:8888/AjaxPrimigenio/index.php";
+                var data = {
+                    action : "register",
+                    user: "Alfredo",
+                    pass: "MolaMazo",
+                    rol : "alumno"
+                };
+
+
+                $.ajax({
+                    url: url,
+                    data: data,
+                    method: "POST",
+
+                    beforeSend: function () {
+                    },
+
+                    success: function (result) {
+			resArray = JSON.parse(result);
+			alert ('la operación ha salido '+ resArray['status']+' con resultado '+ resArray.result);
+			console.log(resArray);
+                    },
+
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert(jqXHR.status);
+                        alert(textStatus);
+                        alert(errorThrown);
+                    }
+
+                });
             }
-
 
 
             function carga() {
                 document.getElementById("ajaxButton").addEventListener('click', alertcontentsGet2);
+                document.getElementById("ajaxButton2").addEventListener('click', altaUsuario);
             }
 
         </script>
@@ -84,6 +92,8 @@ and open the template in the editor.
     <body onload="carga()">
         <div>TODO write content</div>
 
-        <button id="ajaxButton" type="button">Make a request</button>
+        <button id="ajaxButton" type="button">Login</button>
+        <button id="ajaxButton2" type="button">Registrar</button>
+        
     </body>
 </html>
