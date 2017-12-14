@@ -8,7 +8,7 @@ if(!empty($_POST)){
     
     $action = $_POST['action'];
     
-    $loginController = new LoginController();
+   $loginController = new LoginController();
     $result = $loginController->$action();
     echo json_encode($result); 
     /*
@@ -25,7 +25,7 @@ if(!empty($_POST)){
         echo json_encode($result);
     }*/
     return;
-}
+    }
 
 if(!empty($_GET)){
     $array['status'] = 'OK';

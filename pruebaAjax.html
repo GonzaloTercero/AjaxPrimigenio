@@ -32,8 +32,29 @@ and open the template in the editor.
 
                     success: function (result) {
 			resArray = JSON.parse(result);
-			alert ('la operación ha salido '+ resArray['status']+' con resultado '+ resArray.result);
-			console.log(resArray);
+			
+                        
+                        
+                        /* 
+                         * POSITIVO EXTRA EL QUE CONSIGA 
+                         * QUITAR EL TEXTO PREVIO QUE PONE
+                         * ESTE TEXTO SE VA A BORRAR 
+                         * 
+                         * */
+                        
+                        
+                        
+                        
+                        resArray.forEach(function(row){
+                            newHtmlElement = document.createElement('a');
+                            newHtmlElement.setAttribute('id',row.id) ;
+                            newHtmlElement.innerHTML = row.alumno;
+                            console.log(newHtmlElement);
+                            $('#alumnos').append(newHtmlElement);
+                        });
+                        
+        
+        
                     },
 
                     error: function (jqXHR, textStatus, errorThrown) {
@@ -69,7 +90,7 @@ and open the template in the editor.
                     success: function (result) {
 			resArray = JSON.parse(result);
 			alert ('la operación ha salido '+ resArray['status']+' con resultado '+ resArray.result);
-			console.log(resArray);
+			
                     },
 
                     error: function (jqXHR, textStatus, errorThrown) {
@@ -95,6 +116,6 @@ and open the template in the editor.
 
         <button id="ajaxButton" type="button">Login</button>
         <button id="ajaxButton2" type="button">Registrar</button>
-        
+        <div id ='alumnos'>ESTE TEXTO SE VA A BORRAR</div>
     </body>
 </html>

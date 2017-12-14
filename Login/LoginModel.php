@@ -32,9 +32,10 @@ class LoginModel {
     
     
     public function checkLogin($user, $pass){
-        $result['status'] = 'KO';
-        $result['msg'] = 'no me da la gana loguearte';
-        $result['result'] = 'fail absoluto'; 
+        
+        $result[0] = ["id" => 1 , "alumno" => "Alfredo Perez"];
+        $result[1] = ["id" => 2 , "alumno" => "Maria Estevez"];
+        
         return $result;
     }
     
